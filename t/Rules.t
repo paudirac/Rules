@@ -21,7 +21,7 @@ describe "Rules" => sub {
     my $rules = Rules->new;
     it "accepts rules" => sub {
       is(scalar @{$rules->rules}, 0);
-      $rules->add_rule('hola');
+      $rules->add_rule('hola', sub {}, 'error');
       is(scalar @{$rules->rules}, 1);
     };
   };
