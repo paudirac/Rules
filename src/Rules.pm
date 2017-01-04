@@ -9,4 +9,9 @@ has 'rules' => (
     isa => 'ArrayRef',
     default => sub { [] });
 
+sub add_rule {
+    my ($self, $name) = @_;
+    push @{$self->rules}, $name;
+};
+
 1;
