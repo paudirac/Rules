@@ -7,7 +7,7 @@ sub noop {};
 use Moose;
 
 has 'name' => (is => 'ro', isa => 'Str');
-has 'fn' => (is => 'ro', isa => 'Ref', default => sub { noop });
+has 'fn' => (is => 'ro', isa => 'CodeRef', default => sub { noop });
 has 'err' => (is => 'ro', isa => 'Str', default => 'Error');
 
 no Moose;

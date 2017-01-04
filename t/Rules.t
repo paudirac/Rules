@@ -27,6 +27,26 @@ describe "Rules" => sub {
   };
 };
 
+describe "Rules" => sub {
+  my $rules = Rules->new;
+  $rules->add_rule('one', sub { 1; }, 'One error');
+  $rules->add_rule('two', sub { 2; }, 'Two error');
+
+  it "can be executed" => sub {
+    my $rule_one_out = $rules->check_rule('one');
+    is($rule_one_out, 1);
+    my $rule_two_out = $rules->check_rule('two');
+    is($rule_two_out, 2);
+  };
+
+  it "should die for non existent rule" => sub {
+    eval {
+      my $rule_inexistent = $rules->check_rule('x');
+    };
+    ok($@);
+  };
+};
+
 
 runtests unless caller;
 1;
